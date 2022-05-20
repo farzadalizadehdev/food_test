@@ -1,0 +1,46 @@
+@import "./assets/styles/_variables.scss";
+@import "./assets/styles/_mixins.scss";
+
+@font-face {
+  font-family: IRANSans;
+  src: 
+    url("./assets/fonts/iransans/woff2/IRANSansWeb\(FaNum\).woff2")
+      format("woff2"),
+    url("./assets/fonts/iransans/woff/IRANSansWeb\(FaNum\).woff")
+      format("woff"),
+    url("./assets/fonts/iransans/ttf/IRANSansWeb\(FaNum\).ttf")
+      format("truetype");
+  font-weight: normal;
+  // font-style: normal;
+}
+
+body {
+  font-family: IRANsans;
+  padding: 0;
+  margin: 0;
+}
+.loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background-color: rgba(255,255,255,.9);
+  transition: .5 ease-in;
+}
+.noData {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  img {
+    width: 300px;
+  }
+}

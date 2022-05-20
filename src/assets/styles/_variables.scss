@@ -1,0 +1,24 @@
+@import './mixins.scss';
+//font stack
+$farsi: IRANsans;
+
+// Define the breakpoints
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1600px;
+
+//Content Max Width
+$content-max-width: 1400px;
+
+// @include screen(xl) {
+//   }
+//   @include screen(lg) {
+//   }
+//   @include screen(md) {
+//   }
+//   @include screen(sm) {
+//   }
+//   @include screen(xs) {
+//   }

@@ -1,0 +1,221 @@
+@import "../../assets//styles/variables";
+@import "../../assets/styles/_mixins.scss";
+
+.vendors {
+  display: flex;
+  justify-content: center;
+  max-width: $content-max-width;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 350px);
+    @include screen(md) {
+      width: 100%;
+    }
+  }
+
+  &__topfilter {
+    &--wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 2rem;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    &--options {
+      width: 150px;
+      height: 35px;
+      background-color: #fff;
+      border: none;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0 0.5rem;
+      direction: rtl;
+      font-family: IRANsans;
+    }
+    &--toggle {
+      display: none;
+      cursor: pointer;
+      @include screen(md) {
+        display: block;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    padding: 0;
+    direction: rtl;
+    &--nodata {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 25%;
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 0 4px 4px #eee;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin: 16px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    @include screen(xl) {
+      width: 30%;
+    }
+    @include screen(lg) {
+      width: 40%;
+    }
+    @include screen(md) {
+      width: 25%;
+    }
+    @include screen(sm) {
+      width: 30%;
+    }
+    @include screen(xs) {
+      width: 50%;
+    }
+
+    &:hover {
+      box-shadow: 0 4px 8px #ccc;
+      transition: 0.3s ease-in-out;
+      &--title {
+        color: #ec008c;
+        transition: 0.3s ease-in-out;
+      }
+    }
+    &--cover {
+      width: 100%;
+      height: 150px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    &--title {
+      font-size: 1rem;
+      margin-top: 3rem;
+      color: #333333;
+    }
+    &--logo {
+      position: absolute;
+      top: 5rem;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px #eee;
+      z-index: 1;
+    }
+    &--rate {
+      &::before {
+        content: "امتیاز : ";
+      }
+      font-size: 0.8rem;
+      color: #757575;
+    }
+    &--des {
+      font-size: 0.8rem;
+      text-align: center;
+      color: #757575;
+      font-weight: lighter;
+      margin-top: 2rem;
+    }
+  }
+
+  &__filters {
+    display: flex;
+    flex-direction: column;
+    direction: rtl;
+    width: 350px;
+    height: 300px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px #eee;
+    border: 1px solid #eee;
+    position: sticky;
+    top: 5.5rem;
+    margin-top: 1.5rem;
+    border-radius: 8px;
+
+    @include screen(md) {
+      position: fixed;
+      height: 100vh;
+      top: 0;
+      right: 0;
+      z-index: 3;
+      transform: translateX(100%);
+      transition: .3 ease-in-out;
+    }
+
+    &.open {
+      transform: translateX(0%);
+      transition: .3 ease-in-out;
+    }
+
+    &--section {
+      margin: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      &--title {
+        font-size: 0.9em;
+        background-color: #f2f2f2;
+        font-weight: 300;
+        color: #757575;
+        border-radius: 4px;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      &--items {
+        display: flex;
+        flex-direction: column;
+      }
+      &--item {
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          color: #ec008c;
+          transition: 0.2s ease-in-out;
+        }
+      }
+
+      &--lable {
+        font-size: 0.9rem;
+      }
+
+      &--input {
+        margin-left: 1rem;
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        border-color: #eee;
+        font-size: 0.8rem;
+        vertical-align: middle;
+      }
+    }
+  }
+}

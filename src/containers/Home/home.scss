@@ -1,0 +1,25 @@
+.home {
+    height: 100vh;
+    width: 100%;
+    background-color: #ec008c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__title {
+        font-size: 5rem;
+        color: #fff;
+    }
+    &__link {
+        background-color: #fff;
+        border-radius: 8px;
+        width: 150px;
+        height: 40px;
+        padding: 0 16px;
+        text-decoration: none;
+        line-height: 40px;
+        color: #ec008c;
+        text-align: center;
+    }
+}
