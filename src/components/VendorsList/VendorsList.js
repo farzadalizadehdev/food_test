@@ -65,10 +65,6 @@ const VendorsList = () => {
     filter.classList.add("open");
   };
 
-  // const Item = forwardRef((props, ref) => (
-  //   <VendorItem ref={lastVendorElementRef} {...props}/>
-  // ));
-
   return (
     <div className="vendors__wrapper">
       <div className="vendors__topfilter--wrapper">
