@@ -1,15 +1,15 @@
 import React, {
   useEffect,
   useState,
-  useContext,
   useRef,
   useCallback,
+  forwardRef,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initFetchVendors } from "../../store/vendors/actions";
 import loadingImg from "../../assets/images/loading.svg";
 import noDataImg from "../../assets/images/noData.svg";
-import { VendorsContext } from "../../context/VendorsContext";
+import VendorItem from "./VendorItem/VendorItem";
 
 const VendorsList = () => {
   const [vendorList, setVendorList] = useState([]);
@@ -21,7 +21,6 @@ const VendorsList = () => {
     lat: "35.754",
     long: "51.328",
   });
-  const vendorContext = useContext(VendorsContext);
 
   const dispatch = useDispatch();
   const observer = useRef();
@@ -61,25 +60,14 @@ const VendorsList = () => {
     }
   }, [vendors]);
 
-  // useEffect(() => {
-  //   let filterList = vendorContext.filterList;
-  //   const updatedVendorList = [];
-  //   vendorList.map((vendor) => {
-  //     filterList.map((item) => {
-  //       if (vendor.data.deliveryFee <= item) {
-  //         updatedVendorList.push(vendor);
-  //       }
-  //     });
-  //   });
-  //   setVendorList((prevData) => {
-  //     return [...prevData, ...updatedVendorList];
-  //   });
-  // }, [vendorContext]);
-
   const toggleFilterHandler = () => {
     let filter = document.getElementById("filters");
     filter.classList.add("open");
   };
+
+  // const Item = forwardRef((props, ref) => (
+  //   <VendorItem ref={lastVendorElementRef} {...props}/>
+  // ));
 
   return (
     <div className="vendors__wrapper">
@@ -110,23 +98,12 @@ const VendorsList = () => {
       <ul className="vendors__list">
         {vendorList && vendorList.length ? (
           vendorList.map((vendor, index) => {
-            let { title, logo, rate, description, backgroundImage } =
-              vendor.data;
             return (
-              <li
+              <VendorItem
                 ref={lastVendorElementRef}
+                detail={vendor.data}
                 key={index}
-                className="vendors__item"
-              >
-                <img
-                  className="vendors__item--cover"
-                  style={{ backgroundImage: `url(${backgroundImage})` }}
-                />
-                <img className="vendors__item--logo" src={logo} />
-                <h1 className="vendors__item--title">{title}</h1>
-                <span className="vendors__item--rate">{rate}</span>
-                <p className="vendors__item--des">{description}</p>
-              </li>
+              />
             );
           })
         ) : (
