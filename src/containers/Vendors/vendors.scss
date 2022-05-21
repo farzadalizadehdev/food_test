@@ -164,15 +164,28 @@
       position: fixed;
       height: 100vh;
       top: 0;
+      margin: 0;
       right: 0;
-      z-index: 3;
+      z-index: 10;
+      display: none;
       transform: translateX(100%);
-      transition: .3 ease-in-out;
+      transition: 0.3 ease-in-out;
     }
 
     &.open {
+      display: block;
       transform: translateX(0%);
-      transition: .3 ease-in-out;
+      transition: 0.3 ease-in-out;
+    }
+    &--close {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
+      display: none;
+      @include screen(md) {
+        display: block;
+      }
     }
 
     &--section {

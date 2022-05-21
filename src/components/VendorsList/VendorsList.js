@@ -1,10 +1,17 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useRef,
+  useCallback,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { initFetchVendors } from "../../store/vendors/actions";
 import loadingImg from "../../assets/images/loading.svg";
 import noDataImg from "../../assets/images/noData.svg";
+import { VendorsContext } from "../../context/VendorsContext";
 
-const VendorsList = React.memo(function () {
+const VendorsList = () => {
   const [vendorList, setVendorList] = useState([]);
   const [sortingList, setSortingList] = useState(null);
   const { loading, vendors } = useSelector((state) => state.vendors);
@@ -14,6 +21,7 @@ const VendorsList = React.memo(function () {
     lat: "35.754",
     long: "51.328",
   });
+  const vendorContext = useContext(VendorsContext);
 
   const dispatch = useDispatch();
   const observer = useRef();
@@ -53,11 +61,25 @@ const VendorsList = React.memo(function () {
     }
   }, [vendors]);
 
+  // useEffect(() => {
+  //   let filterList = vendorContext.filterList;
+  //   const updatedVendorList = [];
+  //   vendorList.map((vendor) => {
+  //     filterList.map((item) => {
+  //       if (vendor.data.deliveryFee <= item) {
+  //         updatedVendorList.push(vendor);
+  //       }
+  //     });
+  //   });
+  //   setVendorList((prevData) => {
+  //     return [...prevData, ...updatedVendorList];
+  //   });
+  // }, [vendorContext]);
+
   const toggleFilterHandler = () => {
-    let filter = document.getElementById('filters')
-    filter.classList.add("open")
-    console.log('toggleFilterHandler');
-  }
+    let filter = document.getElementById("filters");
+    filter.classList.add("open");
+  };
 
   return (
     <div className="vendors__wrapper">
@@ -73,7 +95,12 @@ const VendorsList = React.memo(function () {
               );
             })}
         </select>
-        <span onClick={toggleFilterHandler} className="vendors__topfilter--toggle">فیلترها</span>
+        <span
+          onClick={toggleFilterHandler}
+          className="vendors__topfilter--toggle"
+        >
+          فیلترها
+        </span>
       </div>
       {loading ? (
         <div className="loading">
@@ -111,6 +138,6 @@ const VendorsList = React.memo(function () {
       </ul>
     </div>
   );
-});
+};
 
 export default VendorsList;
